@@ -1,5 +1,7 @@
 # ssh_worm
 
+DISCLAIMER: this is for educational purposes
+
 "A computer worm is a standalone malware computer program that replicates itself in order to spread to other computers"
 
 # How it works
