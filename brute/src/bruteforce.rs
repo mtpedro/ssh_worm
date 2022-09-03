@@ -14,7 +14,7 @@ pub fn ssh(target: Vec<String>, usernames: &'static [&'static str], passwords: &
             for pass in passwords {
                 let did_it_work = sess.userauth_password(&user, &pass);
 
-                match did_it_work {
+                match did_it_work { //if ssh returns OK(), then it is hacked, otherwise, it isn't
                     Err(_) => println!("failed: {} - {}/{}", &target, user, pass),
                     Ok(_) => {
                         println!("\x1b[93mHACKED {} - {}/{}\x1b[0m", &target, user, pass);

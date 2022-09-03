@@ -3,12 +3,11 @@ use std::{net::{TcpStream, SocketAddr, IpAddr, Ipv4Addr}, time::Duration};
 
 pub struct Ipdata {
     ip_sock: SocketAddr,
-    ip_string: String,
+    pub ip_string: String,
 }
 
-#[allow(unused)]
 pub fn localipstem() -> Option<Vec<String>> { //return a list of online hosts.
-    let mut online_hosts: Vec<String> = host_online();
+    let online_hosts: Vec<String> = host_online();
 
     if online_hosts.len() == 0 {
         return None;
