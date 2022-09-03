@@ -10,6 +10,7 @@ pub fn ssh(target: Vec<String>, usernames: &'static [&'static str], passwords: &
         sess.handshake().unwrap();
 
         'brutessh: for user in usernames {
+            // for every combination of username and password, try and ssh
             for pass in passwords {
                 let did_it_work = sess.userauth_password(&user, &pass);
 
