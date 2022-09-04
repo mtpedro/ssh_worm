@@ -5,12 +5,12 @@ pub const USERNAMES: &'static [&'static str] = &[
     "charlie",
     "toby",
     "jesse",
-    "hugomayo",
+    "hugo",
 ];
 
 pub const PASSWORDS: &'static [&'static str] = &[
     "blackberry",
     "password",
     "1234",
-    "Golden12Words",
+    "astro",
 ];
